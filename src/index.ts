@@ -1,6 +1,20 @@
-export function isItEven(number: number): boolean {
-  return number % 2 === 0;
-}
+import './user';
+import './product';
 
-console.log(isItEven(44));
-console.log(isItEven(55));
+import { ApolloServer } from 'apollo-server';
+import { ApolloGateway } from '@apollo/gateway';
+import { readFileSync } from 'fs';
+
+const supergraphSdl = readFileSync('./supergraph.graphql').toString();
+
+const gateway = new ApolloGateway({
+  supergraphSdl
+});
+
+const server = new ApolloServer({
+  gateway
+});
+
+server.listen().then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`);
+});

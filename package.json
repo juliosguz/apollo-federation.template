@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Base project to start with a Typescript project.",
   "scripts": {
+    "rov": "rover supergraph compose --config ./supergraph-config.yml > supergraph.graphql",
     "dev": "nodemon",
     "lint": "eslint . --ext .ts",
     "test": "jest --collectCoverageFrom='src/**/*.ts'",
@@ -24,6 +25,7 @@
     "@types/node": "^16.11.1",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
+    "concurrently": "^6.3.0",
     "copy-webpack-plugin": "^9.0.1",
     "dotenv": "^10.0.0",
     "eslint": "^8.0.1",
@@ -44,5 +46,11 @@
   "jest": {
     "coverageDirectory": "./coverage/",
     "collectCoverage": true
+  },
+  "dependencies": {
+    "@apollo/gateway": "^0.42.3",
+    "@apollo/subgraph": "^0.1.2",
+    "apollo-server": "^3.4.0",
+    "graphql": "^15.6.1"
   }
 }
